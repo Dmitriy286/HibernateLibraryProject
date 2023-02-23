@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -35,8 +36,8 @@ public class BooksService {
         return book.orElse(null);
     }
 
-    public Book findByNameAuthorAndYear(String bookName, String author, int year) {
-        Book foundBook = booksRepository.findByNameAuthorAndYear(bookName, author, year);
+    public Book findByNameAndAuthorAndYear(String bookName, String author, int year) {
+        Book foundBook = booksRepository.findByNameAndAuthorAndYear(bookName, author, year);
         return foundBook;
     }
 
@@ -60,14 +61,20 @@ public class BooksService {
     @Transactional
     public void setToPerson(int bookId, int personId) {
         Book givenBook = findById(bookId);
+        System.out.println(givenBook);
         Person targetPerson = peopleService.findById(personId);
+        System.out.println(targetPerson);
+        System.out.println(targetPerson.getBooks());
         if (targetPerson.getBooks().isEmpty()) {
-            targetPerson.setBooks(Collections.singletonList(givenBook));
+            targetPerson.setBooks(new ArrayList<>(Collections.singletonList(givenBook)));
         } else {
             targetPerson.getBooks().add(givenBook);
         }
+        givenBook.setPerson(targetPerson);
+        System.out.println(targetPerson.getBooks());
 
         peopleService.save(targetPerson);
+        System.out.println("Success!");
     }
 
     @Transactional

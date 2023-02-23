@@ -7,8 +7,8 @@
 <body>
 <h2 th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></h2>
 <br>
-<div th:switch="${book.getPersonId()}">
-    <div th:case="0">
+<div th:switch="${book.getPerson()}">
+    <div th:case=null>
         <span>Эта книга свободна. Кому назначить ее?</span>
         <form th:method="PATCH" th:action="@{/books/{id}/setbook(id=${book.getBookId()})}">
             <label for="person">Выберите человека</label>

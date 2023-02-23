@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/books")
@@ -40,7 +41,9 @@ public class BooksController {
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model, @ModelAttribute("emptyPerson") Person emptyPerson) {
         Book book = booksService.findById(id);
-        Person person = peopleService.findById(book.getPerson().getPersonId());
+
+        Person person = book.getPerson() != null ? peopleService.findById(book.getPerson().getPersonId()) : null;
+
         List<Person> people = peopleService.findAll();
         model.addAttribute("book", book);
         model.addAttribute("person", person);

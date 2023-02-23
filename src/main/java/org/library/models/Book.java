@@ -1,22 +1,31 @@
 package org.library.models;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
+@Entity
+@Table(name = "book")
 public class Book {
+    @Id
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
+    @Column(name = "name")
     @NotEmpty(message = "Введите название книги")
     @Size(min = 1, max = 50, message = "Название книги должно содержать от 1 до 50 символов")
     private String name;
+
+    @Column(name = "author")
     @NotEmpty(message = "Введите имя автора")
     @Size(min = 2, max = 50, message = "Имя автора должно содержать от 2 до 50 символов")
     private String author;
+
+    @Column(name = "year")
     @Min(value = 1452, message = "Рукописные издания допечатной эры не хранятся в нашей библиотеке")
     @Max(value = 2023, message = "Введите год до 2023")
     private int year;

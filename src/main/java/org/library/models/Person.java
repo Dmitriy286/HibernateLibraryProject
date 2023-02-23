@@ -2,16 +2,26 @@ package org.library.models;
 
 import org.hibernate.annotations.Cascade;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "person")
 public class Person {
+
+    @Id
+    @Column(name = "person_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personId;
+
+    @Column(name = "full_name")
     @Pattern(regexp = "(?U)[А-Я]\\w+ (?U)[А-Я]\\w+ (?U)[А-Я]\\w+", message = "Должно соответствовать шаблону: Фамилия Имя Отчество")
     private String fullName;
+
+    @Column(name = "year_of_birth")
     @Min(value = 1900, message = "Год рождения должен быть больше чем 1900")
     private int yearOfBirth;
 
@@ -26,6 +36,7 @@ public class Person {
     public Person(String fullName, int yearOfBirth) {
         this.fullName = fullName;
         this.yearOfBirth = yearOfBirth;
+        this.books = new ArrayList<>();
     }
 
     public int getPersonId() {
