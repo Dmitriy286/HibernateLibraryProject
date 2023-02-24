@@ -9,26 +9,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="readme">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="refactored for hibernate and spring data jpa using;&#10;app successfully executes.">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/config/SpringConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/repositories/BooksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/repositories/BooksRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/util/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/util/BookValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show-all.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -53,7 +58,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Professional/IdeaProjects/HibernateLibraryProject/.idea"
+    "last_opened_file_path": "C:/Users/Professional/IdeaProjects/FirstRestApp",
+    "list.type.of.created.stylesheet": "CSS",
+    "spring.configuration.checksum": "bf7fd95ca37209ed29850e5b470d5f04"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -69,6 +76,7 @@
       <recent name="C:\Users\Professional\IdeaProjects\HibernateLibraryProject\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Professional\IdeaProjects\HibernateLibraryProject\src\main\webapp\WEB-INF\styles" />
       <recent name="C:\Users\Professional\IdeaProjects\HibernateLibraryProject\src\main\java" />
     </key>
   </component>
@@ -170,7 +178,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677149296818</updated>
-      <workItem from="1677149298741" duration="6930000" />
+      <workItem from="1677149298741" duration="7527000" />
+      <workItem from="1677165908263" duration="3340000" />
+      <workItem from="1677223459226" duration="13852000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1677149821016</created>
@@ -186,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677149922083</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactored for hibernate and spring data jpa using;&#10;app successfully executes.">
+      <created>1677156314525</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677156314525</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +223,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore" />
     <MESSAGE value="readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme" />
+    <MESSAGE value="refactored for hibernate and spring data jpa using;&#10;app successfully executes." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored for hibernate and spring data jpa using;&#10;app successfully executes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
