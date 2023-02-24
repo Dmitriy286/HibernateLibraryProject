@@ -4,7 +4,7 @@
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Книга</title>
 </head>
-<body>
+<body style="background-color: antiquewhite">
 <h2 th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></h2>
 <br>
 <div th:switch="${book.getPerson()}">

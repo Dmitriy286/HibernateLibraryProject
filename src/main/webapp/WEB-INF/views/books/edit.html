@@ -4,7 +4,7 @@
   <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
   <title>Редактировать книгу</title>
 </head>
-<body>
+<body style="background-color: antiquewhite">
 <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getBookId()})}" th:object="${book}">
   <label for="name">Введите название книги:</label>
   <input th:type=text id="name" th:field="*{name}">
