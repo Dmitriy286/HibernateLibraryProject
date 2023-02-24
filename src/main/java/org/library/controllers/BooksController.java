@@ -31,10 +31,29 @@ public class BooksController {
     }
 
     @GetMapping()
-    public String showAllBooks(Model model) {
+    public String showAllBooks(@RequestParam("page") int pageNumber,
+                               @RequestParam("books_per_page") int booksPerPage,
+                               @RequestParam("sort_by_year") boolean sortByYear,
+//                               @Valid int updatedBooksPerPage,
+                               Model model) {
+        System.out.println(pageNumber);
+        System.out.println(booksPerPage);
+        System.out.println(sortByYear);
         List<Book> books;
-        books = booksService.findAll();
+//        books = booksService.findAll();
+        books = booksService.findPerPageAndSort(pageNumber, booksPerPage, sortByYear);
         model.addAttribute("books", books);
+        model.addAttribute("pageNumber", pageNumber);
+        model.addAttribute("booksPerPage", booksPerPage);
+        model.addAttribute("isSorted", sortByYear);
+        int booksQuantity = booksService.getBooksQuantity();
+        model.addAttribute("booksQuantity", booksQuantity);
+
+        System.out.println(booksQuantity);
+        System.out.println(booksPerPage);
+        int totalPageNumbers = (booksQuantity % booksPerPage) == 0 ? booksQuantity / booksPerPage : booksQuantity / booksPerPage + 1;
+        model.addAttribute("totalPageNumbers", totalPageNumbers);
+        System.out.println(totalPageNumbers);
         return "books/show-all";
     }
 
