@@ -1,5 +1,7 @@
 package org.library.services;
 
+import net.bytebuddy.implementation.bytecode.member.HandleInvocation;
+import org.hibernate.Hibernate;
 import org.library.models.Book;
 import org.library.models.Person;
 import org.library.repositories.BooksRepository;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,9 +55,21 @@ public class PeopleService {
     }
 
     public List<Book> getPersonBooks(int personId) {
-        Person person = findById(personId);
-        List<Book> books = booksRepository.findAllByPerson(person);
+//        Person person = findById(personId);
+//        List<Book> books = booksRepository.findAllByPerson(person);
+//
+//        return books;
+        System.out.println("Запрос к БД (человек):");
+        Optional<Person> person = peopleRepository.findById(personId);
 
-        return books;
+        if (person.isPresent()) {
+            System.out.println("Гибер инициализация книг:");
+            Hibernate.initialize(person.get().getBooks());
+            System.out.println("Возвращаем список книг (еще один вызов геттера):");
+            return person.get().getBooks();
+        } else {
+            return Collections.emptyList();
+        }
+
     }
 }

@@ -101,4 +101,10 @@ public class BooksService {
 
         peopleService.save(targetPerson);
     }
+
+    public Book searchBook(String pattern) {
+        Optional<Book> book = booksRepository.findByNameStartingWithIgnoreCase(pattern);
+
+        return book.orElse(null);
+    }
 }
