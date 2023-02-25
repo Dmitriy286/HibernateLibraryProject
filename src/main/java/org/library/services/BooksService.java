@@ -95,8 +95,8 @@ public class BooksService {
     @Transactional
     public void returnBook(int bookId) {
         Book returnedBook = findById(bookId);
-        returnedBook.setPerson(null);
         Person targetPerson = returnedBook.getPerson();
+        returnedBook.setPerson(null);
         targetPerson.getBooks().remove(returnedBook);
 
         peopleService.save(targetPerson);

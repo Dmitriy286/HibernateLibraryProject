@@ -37,10 +37,7 @@ public class PeopleService {
 
     @Transactional
     public void save(Person person) {
-        System.out.println("Trying to save");
-        System.out.println(person);
         peopleRepository.save(person);
-        System.out.println("Saved");
     }
 
     @Transactional
