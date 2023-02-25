@@ -128,4 +128,23 @@ public class BooksController {
 
         return "redirect:/books/{id}";
     }
+
+    @GetMapping("/search")
+    public String getSearchForm(@RequestParam(required = false, value = "pattern") String pattern, Model model) {
+        Book book;
+        System.out.println(pattern);
+        if (pattern != null) {
+            book = booksService.searchBook(pattern);
+        } else {
+            book = null;
+        }
+        System.out.println("book:");
+        System.out.println(book);
+        model.addAttribute("book", book);
+        model.addAttribute("pattern", pattern);
+
+        return "books/search";
+    }
+
+
 }

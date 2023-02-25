@@ -9,12 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="refactored for hibernate and spring data jpa using;&#10;app successfully executes.">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" afterDir="false" />
+    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="Search template, methods in controller, service, repository">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/books/show-all.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -54,11 +51,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Professional/IdeaProjects/FirstRestApp",
+    "last_opened_file_path": "C:/Users/Professional/IdeaProjects/HibernateLibraryProject",
     "list.type.of.created.stylesheet": "CSS",
     "spring.configuration.checksum": "bf7fd95ca37209ed29850e5b470d5f04"
   },
@@ -181,6 +179,8 @@
       <workItem from="1677149298741" duration="7527000" />
       <workItem from="1677165908263" duration="3340000" />
       <workItem from="1677223459226" duration="13852000" />
+      <workItem from="1677242918259" duration="1377000" />
+      <workItem from="1677310650794" duration="11854000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1677149821016</created>
@@ -203,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677156314525</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Search template, methods in controller, service, repository">
+      <created>1677322350438</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677322350438</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,14 +231,15 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="readme" />
     <MESSAGE value="refactored for hibernate and spring data jpa using;&#10;app successfully executes." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored for hibernate and spring data jpa using;&#10;app successfully executes." />
+    <MESSAGE value="Search template, methods in controller, service, repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search template, methods in controller, service, repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java</url>
-          <line>38</line>
+          <line>41</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
