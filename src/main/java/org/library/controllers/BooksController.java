@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/books")
@@ -34,36 +33,28 @@ public class BooksController {
     public String showAllBooks(@RequestParam("page") int pageNumber,
                                @RequestParam("books_per_page") int booksPerPage,
                                @RequestParam("sort_by_year") boolean sortByYear,
-//                               @Valid int updatedBooksPerPage,
                                Model model) {
-        System.out.println(pageNumber);
-        System.out.println(booksPerPage);
-        System.out.println(sortByYear);
-        List<Book> books;
-//        books = booksService.findAll();
-        books = booksService.findPerPageAndSort(pageNumber, booksPerPage, sortByYear);
+
+        List<Book> books = booksService.findPerPageAndSort(pageNumber, booksPerPage, sortByYear);
+        int booksQuantity = booksService.getBooksQuantity();
+        int totalPageNumbers = (booksQuantity % booksPerPage) == 0 ? booksQuantity / booksPerPage : booksQuantity / booksPerPage + 1;
+
         model.addAttribute("books", books);
         model.addAttribute("pageNumber", pageNumber);
         model.addAttribute("booksPerPage", booksPerPage);
         model.addAttribute("isSorted", sortByYear);
-        int booksQuantity = booksService.getBooksQuantity();
         model.addAttribute("booksQuantity", booksQuantity);
-
-        System.out.println(booksQuantity);
-        System.out.println(booksPerPage);
-        int totalPageNumbers = (booksQuantity % booksPerPage) == 0 ? booksQuantity / booksPerPage : booksQuantity / booksPerPage + 1;
         model.addAttribute("totalPageNumbers", totalPageNumbers);
-        System.out.println(totalPageNumbers);
+
         return "books/show-all";
     }
 
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id, Model model, @ModelAttribute("emptyPerson") Person emptyPerson) {
         Book book = booksService.findById(id);
-
         Person person = book.getPerson() != null ? peopleService.findById(book.getPerson().getPersonId()) : null;
-
         List<Person> people = peopleService.findAll();
+
         model.addAttribute("book", book);
         model.addAttribute("person", person);
         model.addAttribute("people", people);
@@ -77,12 +68,13 @@ public class BooksController {
     }
 
     @PostMapping()
-    public String createBook(@ModelAttribute("book") @Valid Book book,
-                             BindingResult bindingResult) {
+    public String createBook(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
         bookValidator.validate(book, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "books/new";
         }
+
         booksService.save(book);
 
         return "redirect:/books";
@@ -97,9 +89,9 @@ public class BooksController {
     }
 
     @PostMapping("/{id}")
-    public String editBook(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book,
-                           BindingResult bindingResult) {
+    public String editBook(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
         bookValidator.validate(book, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "books/edit";
         }
@@ -132,19 +124,16 @@ public class BooksController {
     @GetMapping("/search")
     public String getSearchForm(@RequestParam(required = false, value = "pattern") String pattern, Model model) {
         Book book;
-        System.out.println(pattern);
+
         if (pattern != null) {
             book = booksService.searchBook(pattern);
         } else {
             book = null;
         }
-        System.out.println("book:");
-        System.out.println(book);
+
         model.addAttribute("book", book);
         model.addAttribute("pattern", pattern);
 
         return "books/search";
     }
-
-
 }

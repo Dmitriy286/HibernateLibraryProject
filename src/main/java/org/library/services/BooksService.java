@@ -5,15 +5,11 @@ import org.library.models.Person;
 import org.library.repositories.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -28,9 +24,7 @@ public class BooksService {
     }
 
     public List<Book> findAll() {
-        List<Book> books = booksRepository.findAll();
-
-        return books;
+        return booksRepository.findAll();
     }
 
     public List<Book> findPerPageAndSort(int pageNumber, int booksPerPage, boolean isSorted) {
@@ -52,8 +46,7 @@ public class BooksService {
     }
 
     public Book findByNameAndAuthorAndYear(String bookName, String author, int year) {
-        Book foundBook = booksRepository.findByNameAndAuthorAndYear(bookName, author, year);
-        return foundBook;
+        return booksRepository.findByNameAndAuthorAndYear(bookName, author, year);
     }
 
     @Transactional
@@ -62,10 +55,13 @@ public class BooksService {
     }
 
     @Transactional
-    public void update(int id, Book book) {
-        book.setBookId(id);
-        booksRepository.save(book);
+    public void update(int id, Book updatedBook) {
+        Person person = booksRepository.findById(id).get().getPerson();
 
+        updatedBook.setBookId(id);
+        updatedBook.setPerson(person);
+
+        booksRepository.save(updatedBook);
     }
 
     @Transactional
@@ -76,30 +72,29 @@ public class BooksService {
     @Transactional
     public void setToPerson(int bookId, int personId) {
         Book givenBook = findById(bookId);
-        System.out.println(givenBook);
         Person targetPerson = peopleService.findById(personId);
-        System.out.println(targetPerson);
-        System.out.println(targetPerson.getBooks());
+
         if (targetPerson.getBooks().isEmpty()) {
             targetPerson.setBooks(new ArrayList<>(Collections.singletonList(givenBook)));
         } else {
             targetPerson.getBooks().add(givenBook);
         }
+
+        givenBook.setRentDate(new Date());
         givenBook.setPerson(targetPerson);
-        System.out.println(targetPerson.getBooks());
 
         peopleService.save(targetPerson);
-        System.out.println("Success!");
     }
 
     @Transactional
     public void returnBook(int bookId) {
         Book returnedBook = findById(bookId);
         Person targetPerson = returnedBook.getPerson();
-        returnedBook.setPerson(null);
-        targetPerson.getBooks().remove(returnedBook);
 
-        peopleService.save(targetPerson);
+        returnedBook.setPerson(null);
+        returnedBook.setRentDate(null);
+
+        targetPerson.getBooks().remove(returnedBook);
     }
 
     public Book searchBook(String pattern) {
@@ -107,4 +102,5 @@ public class BooksService {
 
         return book.orElse(null);
     }
+
 }

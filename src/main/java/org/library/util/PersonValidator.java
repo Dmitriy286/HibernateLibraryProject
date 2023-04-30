@@ -20,6 +20,7 @@ public class PersonValidator implements Validator {
         Person person = (Person) target;
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
+
         if ((currentYear - 10) < person.getYearOfBirth()) {
             errors.rejectValue("yearOfBirth", "", "В библиотеке можно регистрировать лиц только старше 10 лет");
         }

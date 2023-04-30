@@ -1,6 +1,5 @@
 package org.library.services;
 
-import net.bytebuddy.implementation.bytecode.member.HandleInvocation;
 import org.hibernate.Hibernate;
 import org.library.models.Book;
 import org.library.models.Person;
@@ -11,8 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -32,6 +33,7 @@ public class PeopleService {
 
     public Person findById(int id) {
         Optional<Person> foundPerson = peopleRepository.findById(id);
+
         return foundPerson.orElse(null);
     }
 
@@ -43,6 +45,7 @@ public class PeopleService {
     @Transactional
     public void update(int id, Person updatedPerson) {
         updatedPerson.setPersonId(id);
+
         peopleRepository.save(updatedPerson);
     }
 
@@ -52,21 +55,30 @@ public class PeopleService {
     }
 
     public List<Book> getPersonBooks(int personId) {
-//        Person person = findById(personId);
-//        List<Book> books = booksRepository.findAllByPerson(person);
-//
-//        return books;
-        System.out.println("Запрос к БД (человек):");
+        checkDates();
+
         Optional<Person> person = peopleRepository.findById(personId);
 
         if (person.isPresent()) {
-            System.out.println("Гибер инициализация книг:");
             Hibernate.initialize(person.get().getBooks());
-            System.out.println("Возвращаем список книг (еще один вызов геттера):");
             return person.get().getBooks();
         } else {
             return Collections.emptyList();
         }
-
     }
+
+    public void checkDates() {
+        List<Book> issuedBooks = booksRepository.findAll().stream().filter(e -> e.getPerson() != null).collect(Collectors.toList());
+        Date currentDate = new Date();
+
+        for (Book book : issuedBooks) {
+            Date bookRentDate = book.getRentDate();
+            int goneTime = (int) (currentDate.getTime() / 86_400_000 - bookRentDate.getTime() / 86_400_000);
+
+            if (goneTime > 10) {
+                book.setOutOfDate(true);
+            }
+        }
+    }
+
 }

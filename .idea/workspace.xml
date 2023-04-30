@@ -9,8 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="Search template, methods in controller, service, repository">
+    <list default="true" id="832d08b2-750b-4774-a5b8-cfb855b8e17a" name="Changes" comment="fix error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/config/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/controllers/PeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/controllers/PeopleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/repositories/BooksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/repositories/BooksRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/services/BooksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/util/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/util/BookValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/library/util/PersonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/library/util/PersonValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/people/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +34,7 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,6 +71,10 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/Professional/IdeaProjects/HibernateLibraryProject",
     "list.type.of.created.stylesheet": "CSS",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.39885056",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "bf7fd95ca37209ed29850e5b470d5f04"
   },
   "keyToStringList": {
@@ -78,7 +95,23 @@
       <recent name="C:\Users\Professional\IdeaProjects\HibernateLibraryProject\src\main\java" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.70">
+    <configuration name="CircularDependencyIntegrationTest.givenCircularDependency_whenConstructorInjection_thenItFails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HibernateLibraryProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.library.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.library" />
+      <option name="MAIN_CLASS_NAME" value="org.library.CircularDependencyIntegrationTest" />
+      <option name="METHOD_NAME" value="givenCircularDependency_whenConstructorInjection_thenItFails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.70" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.70" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -167,6 +200,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CircularDependencyIntegrationTest.givenCircularDependency_whenConstructorInjection_thenItFails" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -181,6 +219,9 @@
       <workItem from="1677223459226" duration="13852000" />
       <workItem from="1677242918259" duration="1377000" />
       <workItem from="1677310650794" duration="11854000" />
+      <workItem from="1677405468123" duration="744000" />
+      <workItem from="1677928734389" duration="5656000" />
+      <workItem from="1682847485924" duration="6531000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1677149821016</created>
@@ -233,16 +274,5 @@
     <MESSAGE value="refactored for hibernate and spring data jpa using;&#10;app successfully executes." />
     <MESSAGE value="Search template, methods in controller, service, repository" />
     <option name="LAST_COMMIT_MESSAGE" value="Search template, methods in controller, service, repository" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/library/services/PeopleService.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -11,10 +11,10 @@
 <div th:if="${books.isEmpty()}">Человек пока не взял ни одной книги</div>
 <div th:if="${!books.isEmpty()}">
     <h3>Книги:</h3>
-    <div th:each="book : ${books}">
-        <div th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></div>
+    <div style="padding-bottom: 5px" th:each="book : ${books}">
+        <div th:style="${book.isOutOfDate()} ? 'color: red' : 'color: black'"
+             th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}"></div>
     </div>
-
 </div>
 <br>
 <hr>

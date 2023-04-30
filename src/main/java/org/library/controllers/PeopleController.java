@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/people")
@@ -50,14 +49,13 @@ public class PeopleController {
     }
 
     @PostMapping()
-    public String createPerson(@ModelAttribute("person") @Valid Person person,
-                               BindingResult bindingResult) {
-
+    public String createPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "people/new";
         }
-        System.out.println(person);
+
         peopleService.save(person);
 
         return "redirect:/people";
@@ -76,9 +74,11 @@ public class PeopleController {
                              BindingResult bindingResult) {
 
         personValidator.validate(person, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }
+
         peopleService.update(id, person);
 
         return "redirect:/people";

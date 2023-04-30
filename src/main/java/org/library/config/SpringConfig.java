@@ -47,6 +47,7 @@ public class SpringConfig implements WebMvcConfigurer {
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
+
         return templateResolver;
     }
 
@@ -55,6 +56,7 @@ public class SpringConfig implements WebMvcConfigurer {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
+
         return templateEngine;
     }
 
@@ -73,11 +75,6 @@ public class SpringConfig implements WebMvcConfigurer {
         dataSource.setUrl(environment.getProperty("hibernate.connection.url"));
         dataSource.setUsername(environment.getProperty("hibernate.connection.username"));
         dataSource.setPassword(environment.getProperty("hibernate.connection.password"));
-
-//        dataSource.setDriverClassName("org.postgresql.Driver");
-//        dataSource.setUrl("jdbc:postgresql://localhost:5432/library_db");
-//        dataSource.setUsername("postgres");
-//        dataSource.setPassword("postgres");
 
         return dataSource;
     }

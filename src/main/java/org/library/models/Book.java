@@ -2,6 +2,7 @@ package org.library.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "book")
@@ -29,6 +30,13 @@ public class Book {
     @Min(value = 1452, message = "Рукописные издания допечатной эры не хранятся в нашей библиотеке")
     @Max(value = 2023, message = "Введите год до 2023")
     private int year;
+
+    @Column(name = "rent_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date rentDate;
+
+    @Transient
+    private boolean isOutOfDate;
 
 
     public Book() {
@@ -82,9 +90,25 @@ public class Book {
         this.year = year;
     }
 
+    public Date getRentDate() {
+        return rentDate;
+    }
+
+    public void setRentDate(Date rentDate) {
+        this.rentDate = rentDate;
+    }
+
+    public boolean isOutOfDate() {
+        return isOutOfDate;
+    }
+
+    public void setOutOfDate(boolean outOfDate) {
+        isOutOfDate = outOfDate;
+    }
+
     @Override
     public String toString() {
         int persId = this.person == null ? 0 : this.person.getPersonId();
-        return getBookId() + ", " + persId + ", " + getName();
+        return getBookId() + ", " + persId + ", " + getName() + ", Out of date: " + isOutOfDate + ", time: " + rentDate;
     }
 }

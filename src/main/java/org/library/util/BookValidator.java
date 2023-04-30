@@ -24,6 +24,7 @@ public class BookValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Book book = (Book) target;
+
         if (booksService.findByNameAndAuthorAndYear(book.getName(), book.getAuthor(), book.getYear()) != null) {
             errors.rejectValue("name", "", "Такая книга уже зарегистрирована в библиотечной системе");
         }
